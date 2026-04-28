@@ -1,0 +1,80 @@
+version: 2
+
+sources:
+
+  - name: postgres #nombre que quieras utilizar para llamarlo en dbt
+    schema: POSTGRES_BRONZE #name schema snowflake
+    database: DB12_BRONZE_DB #name database snowflake
+
+    quoting:
+      database: false #estos 3 son false porque quiere decir que no te tiene que coger el dato tal cual (puede cambiar mayusculas por minusculas)
+      schema: false
+      identifier: false
+
+    tables:
+      - name: Adresses
+        columns:
+        - name: ADDRESS_ID
+        - name: ZIPCODE
+        - name: COUNTRY
+        - name: ADDRESS
+        - name: STATE
+        - name: _FIVETRAN_DELETED
+        - name: _FIVETRAN_SYNCED
+
+      - name: Orders
+        columns:
+        - name: ORDER_ID
+        - name: SHIPPING_SERVICE
+        - name: SHIPPING_COST
+        - name: ADDRESS_ID
+        - name: CREATED_AT
+        - name: PROMO_ID
+        - name: ESTIMATED_DELIVERY_AT
+        - name: ORDER_COST
+        - name: USER_ID
+        - name: ORDER_TOTAL
+        - name: DELIVERED_AT
+        - name: TRACKING_ID
+        - name: STATUS
+        - name: _FIVETRAN_DELETED
+        - name: _FIVETRAN_SYNCED
+
+      - name: Order_items
+        columns:
+        - name: ORDER_ID
+        - name: PRODUCT_ID
+        - name: QUANTITY
+        - name: _FIVETRAN_DELETED
+        - name: _FIVETRAN_SYNCED
+
+      - name: Products
+        columns:
+        - name: PRODUCT_ID
+        - name: PRICE
+        - name: NAME
+        - name: INVENTORY
+        - name: _FIVETRAN_DELETED
+        - name: _FIVETRAN_SYNCED
+
+      - name: Promos
+        columns:
+        - name: PROMO_ID
+        - name: DISCOUNT
+        - name: STATUS
+        - name: _FIVETRAN_DELETED
+        - name: _FIVETRAN_SYNCED
+
+      - name: User
+        columns:
+        - name: USER_ID
+        - name: UPDATED_AT
+        - name: ADDRESS_ID
+        - name: LAST_NAME
+        - name: CREATED_AT
+        - name: PHONE_NUMBER
+        - name: TOTAL_ORDERS
+        - name: FIRST_NAME
+        - name: EMAIL
+        - name: _FIVETRAN_DELETED
+        - name: _FIVETRAN_SYNCED

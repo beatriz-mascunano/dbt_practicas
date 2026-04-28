@@ -1,0 +1,12 @@
+version: 2
+
+models:
+
+  - name: STG_GOOGLE_SHEETS__BUDGET
+    description: tabla staying budget
+    columns:
+      - name: _row
+        description: celda
+        data_tests:
+        - not_null
+        - unique
