@@ -1,4 +1,3 @@
-{{ config(materializewd='view')}}
 
 with 
 
