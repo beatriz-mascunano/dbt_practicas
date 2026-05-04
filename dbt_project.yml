@@ -38,5 +38,20 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   my_new_project:
     # Applies to all files under models/example/
-    example:
+    staging:
+      google_sheets:
+        +database: DB12_SILVER_DB
+        +schema: google_silver_brz
+        +materialized: view
+
+      postgres:
+        +database: DB12_SILVER_DB
+        +schema: postgres_silver_brz
+        +materialized: view
+
+    marts:
       +materialized: table
+      +database: DB12_GOLD_DB
+      +schema: gold_silver
+
+  
