@@ -6,6 +6,15 @@ sources:
     schema: google_bronze # this is the schema our raw data lives in
     database: DB12_BRONZE_DB # this is the name of our database 
 
+    config:
+      freshness:
+        warn_after:
+          count: 24
+          period: hour
+        error_after:
+          count: 48
+          period: hour
+          
     quoting:
       database: false
       schema: false
@@ -14,12 +23,28 @@ sources:
   
     tables:
       - name: google_sheets_budget 
+        description: tabla que viene de google sheets (presupuestos)
         columns:
         - name: _row
+          description: número de línea
+          data_tests:
+            - unique
+            - not_null
+            
         - name: product_id
+          description: id de producto
+          data_tests:
+            - not_null
+            
         - name: quantity
+          description: candidad que hay de productos
+
         - name: month
+          description: mes
+
         - name: _fivetran_synced
+          description: fecha de carga de datos
+         
 
       - name: users
         columns:
